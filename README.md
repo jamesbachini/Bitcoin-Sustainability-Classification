@@ -17,7 +17,7 @@ Node-Fetch npm module installed via npm install (see below)
 
 ## Setup
 
-git clone git@github.com:jamesbachini/Bitcoin-Sustainability-Classification.git
+git clone https://github.com/jamesbachini/Bitcoin-Sustainability-Classification.git
 cd Bitcoin-Sustainability-Classification
 npm install
 node tracer.js 3D2HTvUn3fpFU3mp9a7LWa9YC75dcN5BAM

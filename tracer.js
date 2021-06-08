@@ -16,9 +16,9 @@ const checkPreviousInputs = async (btcAddress) => {
   });
   if (previousAddress) {
     console.log(`Previously sent from ${previousAddress}`);
+    await new Promise(r => setTimeout(r, 10000)); // avoid rate limits
     checkPreviousInputs(previousAddress);
   } else {
-    await new Promise(r => setTimeout(r, 10000)); // avoid rate limits
     checkKnownAddresses(btcAddress);
   }
 }
