@@ -1,0 +1,30 @@
+{
+  "name": "bitcoin-sustainability-classification",
+  "version": "1.0.0",
+  "description": "Tracing application to find original bitcoin miner",
+  "main": "tracer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesbachini/Bitcoin-Sustainability-Classification.git"
+  },
+  "keywords": [
+    "Bitcoin",
+    "Sustainability",
+    "Renewable",
+    "Tracing",
+    "Miner",
+    "Mining"
+  ],
+  "author": "James Bachini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesbachini/Bitcoin-Sustainability-Classification/issues"
+  },
+  "homepage": "https://github.com/jamesbachini/Bitcoin-Sustainability-Classification#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
