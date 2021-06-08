@@ -4,13 +4,21 @@ const btcInput = process.argv[2]; // first command line argument
 
 const checkPreviousInputs = async (btcAddress) => {
   console.log(`Checking address ${btcAddress}`);
-  const res1 = await fetch(`https://blockchain.info/rawaddr/${btcAddress}`).catch(err => utils.errorLog(err));
-  const json = await res1.json().catch(err => utils.errorLog(err));
-  if (json.txs && json.txs[0] && json.txs[0].inputs.addr) {
-    console.log(`Previously sent from ${json.txs[0].inputs.addr}`);
-    checkPreviousInputs(json.txs[0].inputs.addr);
+  const res1 = await fetch(`https://blockchain.info/rawaddr/${btcAddress}`).catch(err => console.error(err));
+  const json = await res1.json().catch(err => console.error(err));
+  let previousAddress = false;
+  // need to add handling for multiple inputs here
+  json.txs.forEach((tx) => {
+    if (!tx.inputs || tx.result <= 0) return false;
+    tx.inputs.forEach((input) => {
+       if (input.prev_out.addr) previousAddress = input.prev_out.addr;
+    });
+  });
+  if (previousAddress) {
+    console.log(`Previously sent from ${previousAddress}`);
+    checkPreviousInputs(previousAddress);
   } else {
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise(r => setTimeout(r, 10000)); // avoid rate limits
     checkKnownAddresses(btcAddress);
   }
 }
